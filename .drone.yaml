@@ -8,8 +8,8 @@ platform:
 
 steps:
 - name: build
-  image: archlinux
+  image: agners/archlinuxarm
   commands:
-  - pacman -S base base-devel wget --noconfirm
+  - pacman -Syu base base-devel wget --noconfirm
   - wget 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=qv2ray-dev-git' -O PKGBUILD
   - env EUID=1 makepkg -sf
