@@ -10,7 +10,9 @@ steps:
 - name: build
   image: agners/archlinuxarm
   commands:
-  - pacman -Syu base base-devel wget --noconfirm
+  - pacman -Sy base-devel wget --noconfirm --needed
   - wget 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=qv2ray-dev-git' -O PKGBUILD
   - sed 's/x86_64/aarch64/' -i PKGBUILD 
+  - sed -i '/E_ROOT/d' /usr/bin/makepkg
+  - sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.zst'/" /etc/makepkg.conf
   - env EUID=1 makepkg -sf
