@@ -1,0 +1,15 @@
+kind: pipeline
+type: docker
+name: default
+
+platform: 
+  os: linux
+  arch: arm64
+
+steps:
+- name: build
+  image: archlinux
+  commands:
+  - pacman -S base base-devel wget --noconfirm
+  - wget 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=qv2ray-dev-git' -O PKGBUILD
+  - env EUID=1 makepkg -sf
