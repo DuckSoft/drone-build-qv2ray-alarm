@@ -16,3 +16,10 @@ steps:
   - sed -i '/E_ROOT/d' /usr/bin/makepkg
   - sed -i "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.zst'/" /etc/makepkg.conf
   - env EUID=1 makepkg -sf
+- name: publish
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_token
+    files: *.tar.zst
+    draft: true
