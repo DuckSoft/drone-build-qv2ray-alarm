@@ -29,7 +29,7 @@ steps:
 ---
 kind: pipeline
 type: docker
-name: default
+name: rank archlinuxarm mirrors
 
 platform: 
   os: linux
