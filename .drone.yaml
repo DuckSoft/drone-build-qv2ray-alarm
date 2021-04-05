@@ -39,5 +39,5 @@ steps:
 - name: rank mirrors
   image: agners/archlinuxarm
   commands:
-  - pacman -Sy pacman-contrib
+  - pacman -Sy pacman-contrib --noconfirm --needed
   - rankmirrors -v -n 6 /etc/pacman.d/mirrorlist
