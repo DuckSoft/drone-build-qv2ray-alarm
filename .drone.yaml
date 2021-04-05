@@ -22,5 +22,5 @@ steps:
   settings:
     api_key:
       from_secret: github_token
-    files: *.tar.zst
+    files: "*.tar.zst"
     draft: true
