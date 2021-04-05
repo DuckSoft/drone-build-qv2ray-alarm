@@ -1,3 +1,4 @@
+---
 kind: pipeline
 type: docker
 name: default
@@ -24,3 +25,18 @@ steps:
       from_secret: github_token
     files: "*.tar.zst"
     draft: true
+
+---
+kind: pipeline
+type: docker
+name: default
+
+platform: 
+  os: linux
+  arch: arm64
+
+steps:
+- name: rank mirrors
+  image: agners/archlinuxarm
+  commands:
+  - rankmirrors -v -n 6 /etc/pacman.d/mirrorlist
